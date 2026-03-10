@@ -6,7 +6,7 @@
 
 <body style="font-family:Arial; margin:0; padding:20px; transition:0.3s;">
 
-<button onclick="toggleTheme()" 
+<button id="themeBtn"
 style="position:fixed; top:15px; right:15px; padding:10px 15px; cursor:pointer;">
 Dark Mode
 </button>
@@ -35,28 +35,37 @@ will remember your selected theme.
 
 <script>
 
+const btn = document.getElementById("themeBtn");
+
+/* Load saved theme */
+
 if(localStorage.getItem("theme") === "dark"){
 document.body.style.backgroundColor="black";
 document.body.style.color="white";
+btn.innerText="Light Mode";
 }
 
-function toggleTheme(){
+/* Toggle theme */
+
+btn.onclick = function(){
 
 if(document.body.style.backgroundColor === "black"){
 
 document.body.style.backgroundColor="white";
 document.body.style.color="black";
+btn.innerText="Dark Mode";
 localStorage.setItem("theme","light");
 
 }else{
 
 document.body.style.backgroundColor="black";
 document.body.style.color="white";
+btn.innerText="Light Mode";
 localStorage.setItem("theme","dark");
 
 }
 
-}
+};
 
 </script>
 
